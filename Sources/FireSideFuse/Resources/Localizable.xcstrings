@@ -1,0 +1,36 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Chat Key" : {
+
+    },
+    "Date" : {
+
+    },
+    "ID" : {
+
+    },
+    "Join Chat" : {
+
+    },
+    "Message" : {
+
+    },
+    "Messages" : {
+
+    },
+    "Messages: %lld" : {
+
+    },
+    "New Chat" : {
+
+    },
+    "Option" : {
+
+    },
+    "Settings" : {
+
+    }
+  },
+  "version" : "1.0"
+}
