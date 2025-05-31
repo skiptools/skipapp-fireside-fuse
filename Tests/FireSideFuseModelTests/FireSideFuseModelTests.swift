@@ -2,12 +2,12 @@ import XCTest
 import OSLog
 import Foundation
 import SkipBridge
-@testable import FireSideModel
+@testable import FireSideFuseModel
 
 let logger: Logger = Logger(subsystem: "FireSideFuseModel", category: "Tests")
 
 @available(macOS 13, *)
-final class FireSideModelTests: XCTestCase {
+final class FireSideFuseModelTests: XCTestCase {
     override func setUp() {
         #if os(Android)
         // needed to load the compiled bridge from the transpiled tests
@@ -15,7 +15,7 @@ final class FireSideModelTests: XCTestCase {
         #endif
     }
 
-    func testFireSideModel() throws {
+    func testFireSideFuseModel() throws {
         logger.log("running testFireSideFuseModel")
         XCTAssertEqual(1 + 2, 3, "basic test")
     }
