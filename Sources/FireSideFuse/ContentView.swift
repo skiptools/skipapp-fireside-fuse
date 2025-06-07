@@ -1,4 +1,4 @@
-import SkipFuseUI
+import SwiftUI
 import FireSideFuseModel
 
 public struct ContentView: View {
