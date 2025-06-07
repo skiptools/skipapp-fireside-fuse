@@ -1,4 +1,6 @@
 import Foundation
+import SwiftUI
+import SkipFuse
 #if os(Android)
 import SkipFirebaseCore
 import SkipFirebaseMessaging
@@ -6,8 +8,6 @@ import SkipFirebaseMessaging
 import FirebaseCore
 import FirebaseMessaging
 #endif
-import SkipFuse
-import SkipFuseUI
 
 /// A logger for the FireSideFuse module.
 let logger: Logger = Logger(subsystem: "org.appfair.app.FireSideFuse", category: "FireSideFuse")
