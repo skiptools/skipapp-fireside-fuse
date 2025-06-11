@@ -11,8 +11,8 @@ let package = Package(
         .library(name: "FireSideFuseModel", type: .dynamic, targets: ["FireSideFuseModel"]),
     ],
     dependencies: [
-        .package(url: "https://source.skip.tools/skip.git", from: "1.5.23"),
-        .package(url: "https://source.skip.tools/skip-fuse-ui.git", "0.15.7"..<"2.0.0"),
+        .package(url: "https://source.skip.tools/skip.git", from: "1.6.0"),
+        .package(url: "https://source.skip.tools/skip-fuse-ui.git", from: "1.0.0"),
         .package(url: "https://source.skip.tools/skip-fuse.git", from: "1.0.2"),
         .package(url: "https://source.skip.tools/skip-model.git", from: "1.5.0"),
         .package(url: "https://source.skip.tools/skip-firebase.git", "0.9.0"..<"2.0.0")
