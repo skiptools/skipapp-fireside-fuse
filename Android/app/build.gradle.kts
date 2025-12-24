@@ -13,15 +13,18 @@ plugins {
 skip {
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget(libs.versions.jvm.get().toString())
+    }
+}
+
 android {
     namespace = group as String
     compileSdk = libs.versions.android.sdk.compile.get().toInt()
     compileOptions {
         sourceCompatibility = JavaVersion.toVersion(libs.versions.jvm.get())
         targetCompatibility = JavaVersion.toVersion(libs.versions.jvm.get())
-    }
-    kotlinOptions {
-        jvmTarget = libs.versions.jvm.get().toString()
     }
     packaging {
         jniLibs {
@@ -36,7 +39,6 @@ android {
         // Update minSdk so that we can control the notification permission. Lower SDKs
         // present the permission prompt automatically but only after receiving a notification
         minSdk = 33 // libs.versions.android.sdk.min.get().toInt()
-
         targetSdk = libs.versions.android.sdk.compile.get().toInt()
         // skip.tools.skip-build-plugin will automatically use Skip.env properties for:
         // applicationId = PRODUCT_BUNDLE_IDENTIFIER
@@ -48,21 +50,29 @@ android {
         buildConfig = true
     }
 
-    lintOptions {
+    lint {
         disable.add("Instantiatable")
+        disable.add("MissingPermission")
     }
 
     // default signing configuration tries to load from keystore.properties
+    // see: https://skip.tools/docs/deployment/#export-signing
     signingConfigs {
         val keystorePropertiesFile = file("keystore.properties")
-        if (keystorePropertiesFile.isFile) {
-            create("release") {
+        create("release") {
+            if (keystorePropertiesFile.isFile) {
                 val keystoreProperties = Properties()
                 keystoreProperties.load(keystorePropertiesFile.inputStream())
                 keyAlias = keystoreProperties.getProperty("keyAlias")
                 keyPassword = keystoreProperties.getProperty("keyPassword")
                 storeFile = file(keystoreProperties.getProperty("storeFile"))
                 storePassword = keystoreProperties.getProperty("storePassword")
+            } else {
+                // when there is no keystore.properties file, fall back to signing with debug config
+                keyAlias = signingConfigs.getByName("debug").keyAlias
+                keyPassword = signingConfigs.getByName("debug").keyPassword
+                storeFile = signingConfigs.getByName("debug").storeFile
+                storePassword = signingConfigs.getByName("debug").storePassword
             }
         }
     }
