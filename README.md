@@ -1,6 +1,6 @@
 # FireSideFuse
 
-This is a [Skip Fuse](https://skip.tools) dual-platform app project demonstrating the use
+This is a [Skip Fuse](https://skip.dev) dual-platform app project demonstrating the use
 of Firebase Firestore and Firebase Messaging.
 It builds a native app for both iOS and Android.
 See the `skip-firebase` module [documentation](https://github.com/skiptools/skip-firebase) for details on integrating Firebase into your cross-platform Skip projects.
